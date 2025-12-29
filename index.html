@@ -352,7 +352,7 @@
 
         .ticket-label {
             font-size: 0.9rem;
-            color: #666;
+            color: #aaa;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -373,40 +373,180 @@
         }
 
         /* --- RESPONSIVE --- */
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .concept-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .speaker-editorial {
+                gap: 3rem;
+            }
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
             h1 {
-                font-size: 3rem;
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
             }
 
             .container {
-                padding: 0 2rem;
+                padding: 0 1.25rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+                min-height: auto;
             }
 
             .concept-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .concept-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .concept-card p {
+                font-size: 1rem;
+            }
+
+            .concept-num {
+                font-size: 2.5rem;
+                top: -1rem;
+                right: 1rem;
             }
 
             .speaker-editorial {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .speaker-text {
+                order: 1;
+                text-align: center;
+            }
+
+            .speaker-bio-highlight {
+                font-size: 1.2rem;
             }
 
             header {
                 justify-content: center;
                 text-align: center;
+                padding: 1rem;
             }
 
             .hero-content {
                 padding-right: 0;
+                text-align: center;
             }
 
             .hero-desc {
                 border-right: none;
-                margin: 0 auto 3rem auto;
+                padding-right: 0;
+                margin: 0 auto 2rem auto;
+                font-size: 1.1rem;
+            }
+
+            .hero-actions {
+                justify-content: center;
             }
 
             .speaker-image-frame {
-                height: 400px;
-                margin-top: 2rem;
+                height: 350px;
+                margin-top: 1.5rem;
+                width: 100%;
+            }
+
+            .speaker-image-frame::after {
+                right: -10px;
+                bottom: -10px;
+                top: 10px;
+                left: 10px;
+            }
+
+            /* Ticket section mobile */
+            .ticket-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                text-align: right;
+                padding: 1.5rem 0;
+            }
+
+            .ticket-row:hover {
+                padding-right: 0;
+            }
+
+            .ticket-value {
+                font-size: 1.2rem;
+            }
+
+            /* Buttons touch-friendly */
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+                min-height: 48px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            footer {
+                padding: 3rem 0;
+            }
+
+            /* Fix for background canvas */
+            #canvas-bg {
+                min-width: unset !important;
+            }
+        }
+
+        /* Small mobile */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .concept-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .speaker-image-frame {
+                height: 280px;
             }
         }
 
@@ -460,26 +600,23 @@
             </div>
         </header>
 
-        <section id="concept">
-            <h2 class="subtitle reveal" style="margin-bottom: 4rem; border-color: transparent;">הקונספט</h2>
-            <!-- Concept Cards Moved to Business Section -->
-
-            <!-- Added Features Section from Flyer -->
-            <div class="reveal"
-                style="margin-top: 6rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <h3 style="color: var(--accent-gold); margin-bottom: 2rem;">מה בהרצאה?</h3>
-                <ul style="list-style: none; text-align: right; display: inline-block;">
-                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ חוויה מעוררת השראה המשלבת בין
-                        מדע, תודעה ורגש דרך סיפורים ותובנות.</li>
-                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ מתאים לכל קהל סקרן – אין צורך
-                        בידע מוקדם.</li>
-                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ הרצאה אינטראקטיבית עם דוגמאות
-                        וסיפורים אמיתיים.</li>
-                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ אפשרות להעברת סדנה אינטראקטיבית
-                        לקבוצות.</li>
-                </ul>
+        <div class="concept-grid reveal" style="gap: 2rem; margin-bottom: 4rem; text-align: right;">
+            <div class="concept-card glass-card">
+                <div class="concept-num">I</div>
+                <h3>פרספקטיבה</h3>
+                <p>כיצד שינוי קנה המידה של המבט שלנו משפיע על האופן שבו אנו מעבדים רגשות ומקבלים החלטות.</p>
             </div>
-        </section>
+            <div class="concept-card glass-card" style="transition-delay: 0.2s;">
+                <div class="concept-num">II</div>
+                <h3>חיבור</h3>
+                <p>ההבנה המדעית והפיזיקלית של הקשר שלנו ליקום, וכיצד היא מתרגמת לתחושת שייכות ואחריות.</p>
+            </div>
+            <div class="concept-card glass-card" style="transition-delay: 0.4s;">
+                <div class="concept-num">III</div>
+                <h3>פליאה (Awe)</h3>
+                <p>איך חווית היקום יכולה לעזור לנו להעצים את תחושת האחריות, החיבור וההודיה בחיים האישיים?</p>
+            </div>
+        </div>
 
         <section id="speaker">
             <div class="speaker-editorial glass-card reveal"
@@ -543,27 +680,30 @@
                     ניתן להתאים את התכנים לאופי הארגון ולשלב סדנה אינטראקטיבית.
                 </p>
 
-                <div class="concept-grid reveal"
-                    style="grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; text-align: right;">
-                    <div class="concept-card glass-card">
-                        <div class="concept-num">I</div>
-                        <h3>פרספקטיבה</h3>
-                        <p>כיצד שינוי קנה המידה של המבט שלנו משפיע על האופן שבו אנו מעבדים רגשות ומקבלים החלטות.</p>
+                <section id="concept">
+                    <!-- Added Features Section from Flyer -->
+                    <div class="reveal"
+                        style="margin-top: 6rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        <h3 style="color: var(--accent-gold); margin-bottom: 2rem;">מה בהרצאה?</h3>
+                        <ul style="list-style: none; text-align: right; display: inline-block;">
+                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ חוויה מעוררת השראה המשלבת
+                                בין
+                                מדע, תודעה ורגש דרך סיפורים ותובנות.</li>
+                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ מתאים לכל קהל סקרן – אין
+                                צורך
+                                בידע מוקדם.</li>
+                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ הרצאה אינטראקטיבית עם
+                                דוגמאות
+                                וסיפורים אמיתיים.</li>
+                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ אפשרות להעברת סדנה
+                                אינטראקטיבית
+                                לקבוצות.</li>
+                        </ul>
                     </div>
-                    <div class="concept-card glass-card" style="transition-delay: 0.2s;">
-                        <div class="concept-num">II</div>
-                        <h3>חיבור</h3>
-                        <p>ההבנה המדעית והפיזיקלית של הקשר שלנו ליקום, וכיצד היא מתרגמת לתחושת שייכות ואחריות.</p>
-                    </div>
-                    <div class="concept-card glass-card" style="transition-delay: 0.4s;">
-                        <div class="concept-num">III</div>
-                        <h3>פליאה (Awe)</h3>
-                        <p>איך חווית היקום יכולה לעזור לנו להעצים את תחושת האחריות, החיבור וההודיה בחיים האישיים?</p>
-                    </div>
-                </div>
+                </section>
 
-                <div class="concept-grid reveal"
-                    style="margin-top: 0; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: right;">
+
+                <div class="concept-grid reveal" style="margin-top: 0; gap: 2rem; text-align: right;">
                     <div class="glass-card" style="padding: 2rem;">
                         <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">הרצאת הדגל</h4>
                         <p style="font-size: 1rem;">45-60 דקות של מסע ויזואלי ואינטלקטואלי מרתק. מתאים לכל דרגי הארגון.

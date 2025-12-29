@@ -3,7 +3,13 @@
 A premium landing page for lectures and workshops on astrophysics, psychology, and the human experience.
 
 ## Live Site
-Visit: `https://[your-username].github.io/official_website/`
+Visit: `https://edenh70.github.io/official_website/`
+
+## Local Development
+To preview changes locally without pushing:
+1. Open terminal in project folder
+2. Run: `python3 -m http.server 8000`
+3. Open: [http://localhost:8000](http://localhost:8000)
 
 ## Structure
 - `index.html` - Main landing page
