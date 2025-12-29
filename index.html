@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>המבט שמחזיר אותנו הביתה | מסע בעקבות הזווית הקוסמית</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Heebo:wght@100;300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #020205;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #E0E0E0;
+            --accent-gold: #D4AF37;
+            --accent-glow: rgba(212, 175, 55, 0.4);
+            --blue-glow: rgba(0, 100, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Heebo', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+            direction: rtl;
+        }
+
+        /* --- IMMERSIVE BACKGROUND & EFFECTS --- */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: url('assets/images/background_abstract.png') center/cover no-repeat;
+            transform: scale(1.1);
+            /* Allowing for slight parallax movement */
+        }
+
+        .overlay-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(2, 2, 5, 0.95) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+        }
+
+        .subtitle {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- LAYOUT UTILS --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        section {
+            padding: 12rem 0;
+            position: relative;
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- GLASSMORPHISM COMPONENTS --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            padding: 4rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            padding-right: 4rem;
+            opacity: 0;
+            animation: heroReveal 2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #ccc;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            border-right: 2px solid var(--accent-gold);
+            padding-right: 2rem;
+        }
+
+        .btn-glow {
+            padding: 1.2rem 3rem;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+            text-align: center;
+            margin-left: 1rem;
+        }
+
+        .btn-glow:last-child {
+            margin-left: 0;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 30px var(--accent-glow);
+            background: rgba(212, 175, 55, 0.15);
+            color: #fff;
+        }
+
+        .btn-secondary {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ccc;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .btn-secondary:hover {
+            border-color: #fff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- CONCEPT SECTION --- */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .concept-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            position: relative;
+        }
+
+        .concept-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .concept-card p {
+            font-size: 1.25rem;
+            color: #aaa;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .concept-num {
+            position: absolute;
+            top: -2rem;
+            right: 2rem;
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- SPEAKER SECTION --- */
+        .speaker-editorial {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .speaker-text {
+            order: 2;
+        }
+
+        .speaker-bio-highlight {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .speaker-image-frame {
+            height: 600px;
+            width: 100%;
+            background: url('assets/images/speaker_eden.jpg') center/cover no-repeat;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+            /* Grayscale filter for extra mood, reveal color on hover? */
+            filter: grayscale(80%) contrast(110%);
+            transition: filter 0.5s ease;
+        }
+
+        .speaker-image-frame:hover {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        /* Overlay frame for speaker */
+        .speaker-image-frame::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 1px solid var(--accent-gold);
+            z-index: -1;
+            opacity: 0.5;
+            transition: all 0.5s ease;
+        }
+
+        .speaker-image-frame:hover::after {
+            top: 10px;
+            left: 10px;
+            right: -10px;
+            bottom: -10px;
+            opacity: 1;
+        }
+
+        /* --- TICKETS --- */
+        .ticket-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .ticket-row:hover {
+            background: rgba(255, 255, 255, 0.02);
+            padding-right: 2rem;
+        }
+
+        .ticket-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ticket-value {
+            font-size: 1.5rem;
+            color: #fff;
+            font-family: 'Cinzel', serif;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 6rem 0;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .container {
+                padding: 0 2rem;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .speaker-editorial {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+
+            .hero-desc {
+                border-right: none;
+                margin: 0 auto 3rem auto;
+            }
+
+            .speaker-image-frame {
+                height: 400px;
+                margin-top: 2rem;
+            }
+        }
+
+        @keyframes heroReveal {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas-bg"></div>
+    <div class="overlay-gradient"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Particle Dust Container -->
+    <div id="particles"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1;"></div>
+
+    <div class="container">
+        <header>
+            <div class="hero-content">
+                <span class="subtitle reveal">הזמנה למסע</span>
+                <h1 class="reveal" style="transition-delay: 0.2s;">המבט שמחזיר אותנו הביתה<br><span
+                        style="font-size: 0.5em; display:block; margin-top: 0.5rem;">איך המבט אל היקום משנה את הדרך שבה
+                        אנחנו תופסים את עצמנו</span>
+                </h1>
+                <p class="hero-desc reveal" style="transition-delay: 0.4s;">
+                    מפגש נדיר בין אסטרופיזיקה לפסיכולוגיה. מסע לתוך המבנים הגדולים של היקום, במטרה להבין את המבנים
+                    העמוקים של הנפש שלנו.
+                    <br><br>
+                    <strong>שילוב של מדע, פילוסופיה ורגש – בגובה העיניים.</strong>
+                </p>
+                <div class="hero-actions reveal" style="transition-delay: 0.6s;">
+                    <a href="#tickets" class="btn-glow">
+                        <span style="display: block;">לקהל הרחב</span>
+                        <!-- <span style="font-size: 0.7em; opacity: 0.7; display: block;">לרכישת כרטיסים</span> -->
+                    </a>
+                    <a href="#business" class="btn-glow btn-secondary">
+                        <span style="display: block;">לארגונים וחברות</span>
+                        <!-- <span style="font-size: 0.7em; opacity: 0.7; display: block;">להזמנת הרצאה</span> -->
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section id="concept">
+            <h2 class="subtitle reveal" style="margin-bottom: 4rem; border-color: transparent;">הקונספט</h2>
+            <!-- Concept Cards Moved to Business Section -->
+
+            <!-- Added Features Section from Flyer -->
+            <div class="reveal"
+                style="margin-top: 6rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h3 style="color: var(--accent-gold); margin-bottom: 2rem;">מה בהרצאה?</h3>
+                <ul style="list-style: none; text-align: right; display: inline-block;">
+                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ חוויה מעוררת השראה המשלבת בין
+                        מדע, תודעה ורגש דרך סיפורים ותובנות.</li>
+                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ מתאים לכל קהל סקרן – אין צורך
+                        בידע מוקדם.</li>
+                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ הרצאה אינטראקטיבית עם דוגמאות
+                        וסיפורים אמיתיים.</li>
+                    <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ אפשרות להעברת סדנה אינטראקטיבית
+                        לקבוצות.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="speaker">
+            <div class="speaker-editorial glass-card reveal"
+                style="padding: 0; background: transparent; border: none; box-shadow: none;">
+                <div class="speaker-text">
+                    <span class="subtitle">הדובר</span>
+                    <h2>עדן חדד</h2>
+                    <p class="speaker-bio-highlight">
+                        "הסקרנות והאהבה הולכים יד ביד, וכדי להרגיש את האהבה ליקום ולעצמנו יש לשמור על אש הסקרנות בתוכנו
+                        בוערת תמיד."
+                    </p>
+                    <p style="color: #aaa; margin-bottom: 2rem;">
+                        מרצה ואיש חינוך, עוסק בהנגשת ידע לציבור הרחב. מחבר בין עולמות התוכן של המדע המדויק לבין החוויה
+                        האנושית והפילוסופית.
+                    </p>
+                </div>
+                <div class="speaker-image-frame reveal"
+                    style="background-image: url('assets/images/speaker_eden_edited.png');"></div>
+            </div>
+        </section>
+
+        <section id="tickets">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 class="subtitle reveal"
+                    style="text-align: center; display: block; border: none; margin-bottom: 2rem;">אירועים קרובים</h2>
+                <h3 class="reveal" style="text-align: center; color: #fff; font-size: 2.5rem; margin-bottom: 4rem;">לקהל
+                    הרחב</h3>
+
+                <div class="glass-card reveal" style="padding: 2rem; border-color: var(--accent-gold);">
+
+                    <!-- Event 1 -->
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">תל אביב: מסע אל האינסוף</h4>
+                        <p style="color: #aaa; font-size: 1rem; margin-bottom: 1.5rem;">מרכז עינב לתרבות, אבן גבירול 71
+                        </p>
+
+                        <div class="ticket-row" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                            <span class="ticket-label">תאריך ושעה</span>
+                            <span class="ticket-value" style="font-size: 1.2rem; direction: ltr;">15.02.25 |
+                                20:30</span>
+                        </div>
+                        <div class="ticket-row" style="border-bottom: none; padding-bottom: 0;">
+                            <span class="ticket-label">כרטיסים</span>
+                            <a href="https://example.com/tickets" class="btn-glow"
+                                style="font-size: 0.9rem; padding: 0.8rem 2.5rem; margin: 0;">לרכישה (85 ₪)</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="business" style="padding-top: 6rem;">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <h2 class="subtitle reveal" style="display: inline-block; border: none;">לארגונים</h2>
+                <h3 class="reveal" style="color: #fff; font-size: 2.5rem; margin-bottom: 2rem;">הרצאות וסדנאות לחברות
+                </h3>
+                <p class="reveal"
+                    style="color: #aaa; font-size: 1.2rem; margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    הזמינו את ההרצאה כאירוע העשרה, הרמת כוסית, או כחלק מיום עיון.
+                    ניתן להתאים את התכנים לאופי הארגון ולשלב סדנה אינטראקטיבית.
+                </p>
+
+                <div class="concept-grid reveal"
+                    style="grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem; text-align: right;">
+                    <div class="concept-card glass-card">
+                        <div class="concept-num">I</div>
+                        <h3>פרספקטיבה</h3>
+                        <p>כיצד שינוי קנה המידה של המבט שלנו משפיע על האופן שבו אנו מעבדים רגשות ומקבלים החלטות.</p>
+                    </div>
+                    <div class="concept-card glass-card" style="transition-delay: 0.2s;">
+                        <div class="concept-num">II</div>
+                        <h3>חיבור</h3>
+                        <p>ההבנה המדעית והפיזיקלית של הקשר שלנו ליקום, וכיצד היא מתרגמת לתחושת שייכות ואחריות.</p>
+                    </div>
+                    <div class="concept-card glass-card" style="transition-delay: 0.4s;">
+                        <div class="concept-num">III</div>
+                        <h3>פליאה (Awe)</h3>
+                        <p>איך חווית היקום יכולה לעזור לנו להעצים את תחושת האחריות, החיבור וההודיה בחיים האישיים?</p>
+                    </div>
+                </div>
+
+                <div class="concept-grid reveal"
+                    style="margin-top: 0; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: right;">
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">הרצאת הדגל</h4>
+                        <p style="font-size: 1rem;">45-60 דקות של מסע ויזואלי ואינטלקטואלי מרתק. מתאים לכל דרגי הארגון.
+                        </p>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">סדנת עומק</h4>
+                        <p style="font-size: 1rem;">מפגש אינטראקטיבי המשלב את ההרצאה עם תרגילים במחשבה פרספקטיבית וקבלת
+                            החלטות.</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="margin-top: 4rem;">
+                    <a href="mailto:eden@example.com" class="btn-glow btn-secondary" style="margin: 0;">צרו קשר להצעת
+                        מחיר</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 Eden. Premium Lecture Series. Designed for the Curious.
+        </footer>
+    </div>
+
+    <script>
+        // --- SCROLL ANIMATIONS ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- ENHANCED PARTICLES ---
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 80; // More particles
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            const size = Math.random() * 2 + 1; // 1px to 3px
+
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.background = Math.random() > 0.9 ? 'rgba(212, 175, 55, 0.8)' : 'rgba(255, 255, 255, 0.8)';
+            particle.style.position = 'absolute';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.opacity = Math.random() * 0.7 + 0.1;
+            particle.style.borderRadius = '50%';
+
+            // Random float parameters
+            const duration = 20 + Math.random() * 40 + 's';
+            const delay = Math.random() * 5 + 's';
+            particle.style.transition = `top ${duration} linear, opacity 4s ease-in-out`;
+
+            particlesContainer.appendChild(particle);
+
+            // Animate loop
+            const speed = Math.random() * 0.5 + 0.1; // Speed factor for parallax later
+
+            setInterval(() => {
+                let currentTop = parseFloat(particle.style.top);
+                currentTop -= speed;
+                if (currentTop < -5) currentTop = 105; // Wrap around
+                particle.style.top = currentTop + '%';
+
+                // Twinkle
+                if (Math.random() > 0.95) {
+                    particle.style.opacity = Math.random() * 0.8 + 0.2;
+                }
+            }, 100);
+        }
+
+        // --- PARALLAX EFFECT ON MOUSE MOVE ---
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+
+            document.getElementById('canvas-bg').style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+        });
+
+    </script>
+</body>
+
+</html>
