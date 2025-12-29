@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="המבט שמחזיר אותנו הביתה - הרצאה סוחפת מאת עדן חדד המשלבת אסטרופיזיקה, פילוסופיה ופסיכולוגיה. מסע לתוך המבנים הגדולים של היקום להבנת הנפש האנושית.">
     <title>המבט שמחזיר אותנו הביתה | מסע בעקבות הזווית הקוסמית</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -569,6 +571,47 @@
     <div class="overlay-gradient"></div>
     <div class="noise-overlay"></div>
 
+    <nav id="navbar"
+        style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 4rem; z-index: 1000; transition: 0.4s; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo" style="font-family: 'Cinzel'; font-size: 1.2rem; font-weight: 600; color: #fff;">EDEN</div>
+        <div class="nav-links" style="display: flex; gap: 2rem;">
+            <a href="#speaker"
+                style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s;">המרצה</a>
+            <a href="#business"
+                style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s;">לארגונים</a>
+            <a href="#tickets"
+                style="color: var(--accent-gold); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: 0.3s;">כרטיסים</a>
+        </div>
+    </nav>
+    <style>
+        .nav-scrolled {
+            background: rgba(2, 2, 5, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 4rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav a:hover {
+            color: #fff !important;
+        }
+
+        @media (max-width: 768px) {
+            #navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            /* Save space on mobile */
+        }
+    </style>
+
     <!-- Particle Dust Container -->
     <div id="particles"
         style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1;"></div>
@@ -578,8 +621,9 @@
             <div class="hero-content">
                 <span class="subtitle reveal">הזמנה למסע</span>
                 <h1 class="reveal" style="transition-delay: 0.2s;">המבט שמחזיר אותנו הביתה<br><span
-                        style="font-size: 0.5em; display:block; margin-top: 0.5rem;">איך המבט אל היקום משנה את הדרך שבה
-                        אנחנו תופסים את עצמנו</span>
+                        style="font-size: 0.5em; display:block; margin-top: 0.5rem; color: var(--accent-gold); opacity: 0.9;">
+                        כלים מעשיים לקבלת החלטות ופורפרוציה בחיים והעסקים<br>בהשראת חקר היקום והאסטרופיזיקה
+                    </span>
                 </h1>
                 <p class="hero-desc reveal" style="transition-delay: 0.4s;">
                     מפגש נדיר בין אסטרופיזיקה לפסיכולוגיה. מסע לתוך המבנים הגדולים של היקום, במטרה להבין את המבנים
@@ -599,6 +643,20 @@
                 </div>
             </div>
         </header>
+
+        <!-- SOCIAL PROOF SECTION -->
+        <div class="reveal" style="text-align: center; margin-bottom: 4rem; opacity: 0.6; margin-top: -2rem;">
+            <p
+                style="font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; color: #888;">
+                ההרצאה נבחרה ע״י הארגונים המובילים בישראל</p>
+            <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; filter: grayscale(100%);">
+                <!-- Placeholders for logos -->
+                <span style="font-family: 'Cinzel'; font-size: 1.5rem; color: #666;">GOOGLE</span>
+                <span style="font-family: 'Cinzel'; font-size: 1.5rem; color: #666;">MICROSOFT</span>
+                <span style="font-family: 'Cinzel'; font-size: 1.5rem; color: #666;">INTEL</span>
+                <span style="font-family: 'Cinzel'; font-size: 1.5rem; color: #666;">WEIZMANN INST.</span>
+            </div>
+        </div>
 
         <div class="concept-grid reveal" style="gap: 2rem; margin-bottom: 4rem; text-align: right;">
             <div class="concept-card glass-card">
@@ -745,53 +803,59 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // --- ENHANCED PARTICLES ---
+
+        // --- OPTIMIZED PARTICLES (Performance Fix) ---
         const particlesContainer = document.getElementById('particles');
-        const particleCount = 80; // More particles
+        const particleCount = 60; // Reduced slighty for mobile performance
+
+        const particles = [];
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
-            const size = Math.random() * 2 + 1; // 1px to 3px
+            const size = Math.random() * 2 + 1;
 
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.background = Math.random() > 0.9 ? 'rgba(212, 175, 55, 0.8)' : 'rgba(255, 255, 255, 0.8)';
-            particle.style.position = 'absolute';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.opacity = Math.random() * 0.7 + 0.1;
-            particle.style.borderRadius = '50%';
-
-            // Random float parameters
-            const duration = 20 + Math.random() * 40 + 's';
-            const delay = Math.random() * 5 + 's';
-            particle.style.transition = `top ${duration} linear, opacity 4s ease-in-out`;
+            // Set initial styles
+            Object.assign(particle.style, {
+                width: size + 'px',
+                height: size + 'px',
+                background: Math.random() > 0.9 ? 'rgba(212, 175, 55, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+                position: 'absolute',
+                left: Math.random() * 100 + '%',
+                top: Math.random() * 100 + '%',
+                opacity: Math.random() * 0.7 + 0.1,
+                borderRadius: '50%',
+                willChange: 'transform, opacity'
+            });
 
             particlesContainer.appendChild(particle);
 
-            // Animate loop
-            const speed = Math.random() * 0.5 + 0.1; // Speed factor for parallax later
-
-            setInterval(() => {
-                let currentTop = parseFloat(particle.style.top);
-                currentTop -= speed;
-                if (currentTop < -5) currentTop = 105; // Wrap around
-                particle.style.top = currentTop + '%';
-
-                // Twinkle
-                if (Math.random() > 0.95) {
-                    particle.style.opacity = Math.random() * 0.8 + 0.2;
-                }
-            }, 100);
+            // Store physics state
+            particles.push({
+                el: particle,
+                y: parseFloat(particle.style.top),
+                speed: Math.random() * 0.05 + 0.02, // Slower, smoother
+                opacity: parseFloat(particle.style.opacity),
+                opacitySpeed: (Math.random() - 0.5) * 0.005
+            });
         }
 
-        // --- PARALLAX EFFECT ON MOUSE MOVE ---
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+        // Single Animation Loop (Performance optimized)
+        function animateParticles() {
+            particles.forEach(p => {
+                // Move up
+                p.y -= p.speed;
+                if (p.y < -5) p.y = 105;
+                p.el.style.top = p.y + '%';
 
-            document.getElementById('canvas-bg').style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
-        });
+                // Twinkle
+                p.opacity += p.opacitySpeed;
+                if (p.opacity > 0.8 || p.opacity < 0.1) p.opacitySpeed *= -1;
+                p.el.style.opacity = p.opacity;
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        requestAnimationFrame(animateParticles);
 
     </script>
 </body>
