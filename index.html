@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Heebo:wght@100;300;400;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --bg-deep: #020205;
@@ -300,8 +301,9 @@
         }
 
         .speaker-image-frame {
-            height: 600px;
-            width: 100%;
+            height: 400px;
+            width: 80%;
+            margin: 0 auto;
             background: url('assets/images/speaker_eden.jpg') center/cover no-repeat;
             border: 1px solid var(--glass-border);
             position: relative;
@@ -573,7 +575,14 @@
 
     <nav id="navbar"
         style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 4rem; z-index: 1000; transition: 0.4s; display: flex; justify-content: space-between; align-items: center;">
-        <div class="logo" style="font-family: 'Cinzel'; font-size: 1.2rem; font-weight: 600; color: #fff;">EDEN</div>
+        <div class="social-nav" style="display: flex; gap: 1.5rem;">
+            <a href="https://linkedin.com" target="_blank" style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com" target="_blank" style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="mailto:eden@example.com" style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i
+                    class="fas fa-envelope"></i></a>
+        </div>
         <div class="nav-links" style="display: flex; gap: 2rem;">
             <a href="#speaker"
                 style="color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s;">המרצה</a>
@@ -700,8 +709,7 @@
             <div style="max-width: 800px; margin: 0 auto;">
                 <h2 class="subtitle reveal"
                     style="text-align: center; display: block; border: none; margin-bottom: 2rem;">אירועים קרובים</h2>
-                <h3 class="reveal" style="text-align: center; color: #fff; font-size: 2.5rem; margin-bottom: 4rem;">לקהל
-                    הרחב</h3>
+                <!-- Removed Redundant H3 -->
 
                 <div class="glass-card reveal" style="padding: 2rem; border-color: var(--accent-gold);">
 
@@ -771,6 +779,11 @@
                         <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">סדנת עומק</h4>
                         <p style="font-size: 1rem;">מפגש אינטראקטיבי המשלב את ההרצאה עם תרגילים במחשבה פרספקטיבית וקבלת
                             החלטות.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">סדנאות לילדים</h4>
+                        <p style="font-size: 1rem;">חקר היקום דרך הדמיון והסקרנות. מפגש המותאם במיוחד לבתי ספר, מרכזי
+                            מצוינות ונוער שוחר מדע.</p>
                     </div>
                 </div>
 
