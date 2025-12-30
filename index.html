@@ -605,19 +605,30 @@
         }
 
         @media (max-width: 768px) {
-            #navbar {
-                padding: 1rem;
+
+            #navbar,
+            #navbar.nav-scrolled {
+                padding: 0.8rem 1rem !important;
+                flex-wrap: nowrap;
+            }
+
+            .social-nav {
+                gap: 1rem !important;
+            }
+
+            .social-nav a {
+                font-size: 1.1rem !important;
             }
 
             .nav-links {
-                gap: 1rem;
+                gap: 1rem !important;
             }
 
-            .logo {
-                display: none;
+            .nav-links a {
+                font-size: 0.85rem !important;
             }
 
-            /* Save space on mobile */
+            /* Logo is now replaced by social-nav, so no need to hide .logo. */
         }
     </style>
 
