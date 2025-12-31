@@ -7,12 +7,14 @@
     <meta name="description"
         content="המבט שמחזיר אותנו הביתה - הרצאה סוחפת מאת עדן חדד המשלבת אסטרופיזיקה, פילוסופיה ופסיכולוגיה. מסע לתוך המבנים הגדולים של היקום להבנת הנפש האנושית.">
     <title>המבט שמחזיר אותנו הביתה | מסע בעקבות הזווית הקוסמית</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Heebo:wght@100;300;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         :root {
             --bg-deep: #020205;
@@ -32,6 +34,8 @@
 
         html {
             scroll-behavior: smooth;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -41,6 +45,7 @@
             overflow-x: hidden;
             line-height: 1.7;
             direction: rtl;
+            max-width: 100%;
         }
 
         /* --- IMMERSIVE BACKGROUND & EFFECTS --- */
@@ -52,7 +57,6 @@
             height: 100%;
             z-index: -2;
             background: var(--bg-deep);
-            /* Stars only - no background image */
         }
 
         .overlay-gradient {
@@ -308,7 +312,6 @@
             border: 1px solid var(--glass-border);
             position: relative;
             box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
-            /* Grayscale filter for extra mood, reveal color on hover? */
             filter: grayscale(80%) contrast(110%);
             transition: filter 0.5s ease;
         }
@@ -377,11 +380,6 @@
         }
 
         /* --- RESPONSIVE --- */
-        html,
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
 
         /* Tablet */
         @media (max-width: 1024px) {
@@ -529,9 +527,45 @@
                 padding: 3rem 0;
             }
 
-            /* Fix for background canvas */
             #canvas-bg {
                 min-width: unset !important;
+            }
+
+            /* Navbar Mobile Styles (Single Row, Words Left) */
+            #navbar,
+            #navbar.nav-scrolled {
+                padding: 0.5rem 1rem !important;
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                height: auto !important;
+                gap: 0.5rem !important;
+            }
+
+            .social-nav {
+                display: flex;
+                justify-content: flex-start !important;
+                /* Right in RTL */
+                padding-right: 0 !important;
+                width: auto !important;
+                gap: 0.8rem !important;
+                margin-bottom: 0;
+            }
+
+            .social-nav a {
+                font-size: 1rem !important;
+            }
+
+            .nav-links {
+                display: flex;
+                justify-content: flex-end !important;
+                /* Left in RTL */
+                width: auto !important;
+                gap: 0.8rem !important;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem !important;
             }
         }
 
@@ -603,50 +637,8 @@
         nav a:hover {
             color: #fff !important;
         }
-
-        @media (max-width: 768px) {
-
-            #navbar,
-            #navbar.nav-scrolled {
-                padding: 0.5rem 1rem !important;
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                height: auto !important;
-                gap: 0.5rem !important;
-            }
-
-            .social-nav {
-                display: flex;
-                justify-content: flex-start !important;
-                /* Right in RTL */
-                padding-right: 0 !important;
-                width: auto !important;
-                gap: 0.8rem !important;
-                margin-bottom: 0;
-            }
-
-            .social-nav a {
-                font-size: 1rem !important;
-            }
-
-            .nav-links {
-                display: flex;
-                justify-content: flex-end !important;
-                /* Left in RTL */
-                width: auto !important;
-                gap: 0.8rem !important;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem !important;
-            }
-
-            /* Logo is now replaced by social-nav, so no need to hide .logo. */
-        }
     </style>
 
-    <!-- Particle Dust Container -->
     <div id="particles"
         style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1;"></div>
 
@@ -654,7 +646,8 @@
         <header>
             <div class="hero-content">
                 <span class="subtitle reveal">הזמנה למסע</span>
-                <h1 class="reveal" style="transition-delay: 0.2s;">המבט שמחזיר אותנו הביתה<br><span
+                <h1 class="reveal" style="transition-delay: 0.2s;">המבט שמחזיר אותנו הביתה<br>
+                    <span
                         style="font-size: 0.5em; display:block; margin-top: 0.5rem; color: var(--accent-gold); opacity: 0.9;">
                         איך המבט אל היקום משנה את הדרך שבה אנחנו תופסים את עצמנו
                     </span>
@@ -668,11 +661,9 @@
                 <div class="hero-actions reveal" style="transition-delay: 0.6s;">
                     <a href="#tickets" class="btn-glow">
                         <span style="display: block;">לקהל הרחב</span>
-                        <!-- <span style="font-size: 0.7em; opacity: 0.7; display: block;">לרכישת כרטיסים</span> -->
                     </a>
                     <a href="#business" class="btn-glow btn-secondary">
                         <span style="display: block;">לארגונים וחברות</span>
-                        <!-- <span style="font-size: 0.7em; opacity: 0.7; display: block;">להזמנת הרצאה</span> -->
                     </a>
                 </div>
             </div>
@@ -683,7 +674,8 @@
             style="display: none; text-align: center; margin-bottom: 4rem; opacity: 0.6; margin-top: -2rem;">
             <p
                 style="font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; color: #888;">
-                ההרצאה נבחרה ע״י הארגונים המובילים בישראל</p>
+                ההרצאה נבחרה ע״י הארגונים המובילים בישראל
+            </p>
             <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; filter: grayscale(100%);">
                 <!-- Placeholders for logos -->
                 <span style="font-family: 'Cinzel'; font-size: 1.5rem; color: #666;">GOOGLE</span>
@@ -735,10 +727,8 @@
             <div style="max-width: 800px; margin: 0 auto;">
                 <h2 class="subtitle reveal"
                     style="text-align: center; display: block; border: none; margin-bottom: 2rem;">אירועים קרובים</h2>
-                <!-- Removed Redundant H3 -->
 
                 <div class="glass-card reveal" style="padding: 2rem; border-color: var(--accent-gold);">
-
                     <!-- Event 1 -->
                     <div style="margin-bottom: 2rem;">
                         <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">תל אביב: מסע אל האינסוף</h4>
@@ -756,7 +746,6 @@
                                 style="font-size: 0.9rem; padding: 0.8rem 2.5rem; margin: 0;">לרכישה (85 ₪)</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -773,27 +762,21 @@
                 </p>
 
                 <section id="concept">
-                    <!-- Added Features Section from Flyer -->
                     <div class="reveal"
                         style="margin-top: 6rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
                         <h3 style="color: var(--accent-gold); margin-bottom: 2rem;">מה בהרצאה?</h3>
                         <ul style="list-style: none; text-align: right; display: inline-block;">
                             <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ חוויה מעוררת השראה המשלבת
-                                בין
-                                מדע, תודעה ורגש דרך סיפורים ותובנות.</li>
+                                בין מדע, תודעה ורגש דרך סיפורים ותובנות.</li>
                             <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ מתאים לכל קהל סקרן – אין
-                                צורך
-                                בידע מוקדם.</li>
+                                צורך בידע מוקדם.</li>
                             <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ הרצאה אינטראקטיבית עם
-                                דוגמאות
-                                וסיפורים אמיתיים.</li>
+                                דוגמאות וסיפורים אמיתיים.</li>
                             <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ אפשרות להעברת סדנה
-                                אינטראקטיבית
-                                לקבוצות.</li>
+                                אינטראקטיבית לקבוצות.</li>
                         </ul>
                     </div>
                 </section>
-
 
                 <div class="concept-grid reveal" style="margin-top: 0; gap: 2rem; text-align: right;">
                     <div class="glass-card" style="padding: 2rem;">
@@ -815,8 +798,7 @@
 
                 <div class="reveal" style="margin-top: 4rem;">
                     <a href="mailto:edenhadad70@gmail.com" class="btn-glow btn-secondary" style="margin: 0;">צרו קשר
-                        להצעת
-                        מחיר</a>
+                        להצעת מחיר</a>
                 </div>
             </div>
         </section>
@@ -842,7 +824,6 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
 
         // --- OPTIMIZED PARTICLES (Performance Fix) ---
         const particlesContainer = document.getElementById('particles');
@@ -896,7 +877,6 @@
         }
 
         requestAnimationFrame(animateParticles);
-
     </script>
 </body>
 
