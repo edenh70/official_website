@@ -5,8 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="המבט שמחזיר אותנו הביתה - הרצאה סוחפת מאת עדן חדד המשלבת אסטרופיזיקה, פילוסופיה ופסיכולוגיה. מסע לתוך המבנים הגדולים של היקום להבנת הנפש האנושית.">
+        content="המבט שמחזיר אותנו הביתה - הרצאה סוחפת מאת עדן חדד המשלבת אסטרופיזיקה, פילוסופיה, פסיכולוגיה ורגש. מסע לתוך המבנים הגדולים של היקום להבנת הנפש האנושית.">
     <title>המבט שמחזיר אותנו הביתה | מסע בעקבות הזווית הקוסמית</title>
+
+    <!-- SEO & Social Meta Tags -->
+    <meta name="keywords"
+        content="אסטרופיזיקה, פילוסופיה, פסיכולוגיה, עדן חדד, הרצאות השראה, סדנאות למנהלים, משמעות, פרספקטיבה, יום עיון, הרצאות לארגונים">
+    <meta name="author" content="Eden Hadad">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://edenhadad.com/">
+    <meta property="og:title" content="המבט שמחזיר אותנו הביתה | עדן חדד">
+    <meta property="og:description"
+        content="הרצאה סוחפת המשלבת אסטרופיזיקה, פילוסופיה ופסיכולוגיה. מסע לתוך המבנים הגדולים של היקום להבנת הנפש האנושית.">
+    <meta property="og:image" content="assets/images/speaker_eden_edited.png">
+    <meta property="og:locale" content="he_IL">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="המבט שמחזיר אותנו הביתה | עדן חדד">
+    <meta property="twitter:description" content="הרצאה סוחפת המשלבת אסטרופיזיקה, מאת עדן חדד.">
+    <meta property="twitter:image" content="assets/images/speaker_eden_edited.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -877,6 +897,42 @@
         }
 
         requestAnimationFrame(animateParticles);
+    </script>
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "המבט שמחזיר אותנו הביתה - הרצאה",
+      "startDate": "2025-02-15T20:30",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "מרכז עינב לתרבות",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "אבן גבירול 71",
+          "addressLocality": "Tel Aviv",
+          "addressCountry": "IL"
+        }
+      },
+      "image": [
+        "assets/images/speaker_eden_edited.png"
+      ],
+      "description": "הרצאה סוחפת מאת עדן חדד המשלבת אסטרופיזיקה, פילוסופיה ופסיכולוגיה.",
+      "performer": {
+        "@type": "Person",
+        "name": "Eden Hadad"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://example.com/tickets",
+        "price": "85",
+        "priceCurrency": "ILS",
+        "availability": "https://schema.org/InStock"
+      }
+    }
     </script>
 </body>
 
