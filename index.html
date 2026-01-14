@@ -311,9 +311,7 @@
             align-items: center;
         }
 
-        .speaker-text {
-            /* order: 2; removed to align text to the right (first in DOM) */
-        }
+
 
         .speaker-bio-highlight {
             font-size: 1.5rem;
@@ -650,10 +648,10 @@
     <nav id="navbar"
         style="position: fixed; top: 0; left: 0; width: 100%; padding: 1.5rem 4rem; z-index: 1000; transition: 0.4s; display: flex; justify-content: space-between; align-items: center;">
         <div class="social-nav" style="display: flex; gap: 1.5rem;">
-            <a href="https://linkedin.com" target="_blank" style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i
-                    class="fab fa-linkedin"></i></a>
-            <a href="https://instagram.com" target="_blank" style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i
-                    class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/eden-hadad-70/" target="_blank"
+                style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/eden_hadad70/" target="_blank"
+                style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i class="fab fa-instagram"></i></a>
             <a href="mailto:edenhadad70@gmail.com" style="color: #fff; font-size: 1.2rem; transition: 0.3s;"><i
                     class="fas fa-envelope"></i></a>
         </div>
@@ -731,17 +729,14 @@
 
         <div class="concept-grid reveal" style="gap: 2rem; margin-bottom: 4rem; text-align: right;">
             <div class="concept-card glass-card">
-                <div class="concept-num">I</div>
                 <h3>פרספקטיבה</h3>
                 <p>כיצד שינוי קנה המידה של המבט שלנו משפיע על האופן שבו אנו תופסים את המציאות ומעבדים רגשות.</p>
             </div>
             <div class="concept-card glass-card" style="transition-delay: 0.2s;">
-                <div class="concept-num">II</div>
                 <h3>חיבור</h3>
                 <p>ההבנה המדעית והפיזיקלית של הקשר שלנו ליקום, וכיצד היא מתרגמת לתחושת שייכות ואחריות.</p>
             </div>
             <div class="concept-card glass-card" style="transition-delay: 0.4s;">
-                <div class="concept-num">III</div>
                 <h3>פליאה (Awe)</h3>
                 <p>איך חווית היקום יכולה לעזור לנו להעצים את תחושת האחריות, החיבור וההודיה בחיים האישיים?</p>
             </div>
@@ -773,22 +768,16 @@
                     style="text-align: center; display: block; border: none; margin-bottom: 2rem;">אירועים קרובים</h2>
 
                 <div class="glass-card reveal" style="padding: 2rem; border-color: var(--accent-gold);">
-                    <!-- Event 1 -->
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">תל אביב: המבט שמחזיר אותנו
-                            הביתה</h4>
-                        <p style="color: #aaa; font-size: 1rem; margin-bottom: 1.5rem;">בית קפה קיוסקו, ידידיה פרנקל 31
+                    <!-- Event Payload -->
+                    <div style="margin-bottom: 2rem; text-align: center;">
+                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem; opacity: 0.7;">בקרוב</h4>
+                        <p style="color: #aaa; font-size: 1rem; margin-bottom: 1.5rem;">
+                            כרגע אין אירועים פתוחים לקהל הרחב.
+                            <br>עקבו אחרי באינסטגרם לעדכונים.
                         </p>
-
-                        <div class="ticket-row" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                            <span class="ticket-label">תאריך ושעה</span>
-                            <span class="ticket-value" style="font-size: 1.2rem; direction: ltr;">15.02.25 |
-                                20:30</span>
-                        </div>
-                        <div class="ticket-row" style="border-bottom: none; padding-bottom: 0;">
-                            <span class="ticket-label">כרטיסים</span>
-                            <a href="https://example.com/tickets" class="btn-glow"
-                                style="font-size: 0.9rem; padding: 0.8rem 2.5rem; margin: 0;">להזמנת מקום (חינם)</a>
+                        <div class="btn-glow"
+                            style="font-size: 0.9rem; padding: 0.8rem 2.5rem; margin: 0; opacity: 0.5; cursor: not-allowed; filter: grayscale(1);">
+                            בקרוב
                         </div>
                     </div>
                 </div>
@@ -806,63 +795,62 @@
                     ניתן להתאים את התכנים לאופי הארגון ולשלב סדנה אינטראקטיבית.
                 </p>
 
-                <section id="concept">
-                    <div class="reveal"
-                        style="margin-top: 6rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-                        <h3 style="color: var(--accent-gold); margin-bottom: 2rem;">מה בהרצאה?</h3>
-                        <ul style="list-style: none; text-align: right; display: inline-block;">
-                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ חוויה מעוררת השראה המשלבת
-                                בין מדע, תודעה ורגש דרך סיפורים ותובנות.</li>
-                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ מתאים לכל קהל סקרן – אין
-                                צורך בידע מוקדם.</li>
-                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ הרצאה אינטראקטיבית עם
-                                דוגמאות וסיפורים אמיתיים.</li>
-                            <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ אפשרות להעברת סדנה
-                                אינטראקטיבית לקבוצות.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <div class="concept-grid reveal" style="margin-top: 0; gap: 2rem; text-align: right;">
-                    <div class="glass-card" style="padding: 2rem;">
-                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">הרצאת הדגל</h4>
-                        <p style="font-size: 1rem;">45-60 דקות של מסע ויזואלי ואינטלקטואלי מרתק. מתאים לכל דרגי הארגון.
-                        </p>
-                    </div>
-                    <div class="glass-card" style="padding: 2rem;">
-                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">סדנת עומק</h4>
-                        <p style="font-size: 1rem;">מפגש אינטראקטיבי המשלב את ההרצאה עם תרגילים במחשבה פרספקטיבית וקבלת
-                            החלטות.</p>
-                    </div>
-                    <div class="glass-card" style="padding: 2rem;">
-                        <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">סדנאות לילדים</h4>
-                        <p style="font-size: 1rem;">חקר היקום דרך הדמיון והסקרנות. מפגש המותאם במיוחד לבתי ספר, מרכזי
-                            מצוינות ונוער שוחר מדע.</p>
-                    </div>
+                <div class="reveal"
+                    style="margin-top: 3rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 2rem;">מה בהרצאה?</h3>
+                    <ul style="list-style: none; text-align: right; display: inline-block;">
+                        <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ חוויה מעוררת השראה המשלבת
+                            בין מדע, תודעה ורגש דרך סיפורים ותובנות.</li>
+                        <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ מתאים לכל קהל סקרן – אין
+                            צורך בידע מוקדם.</li>
+                        <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ הרצאה ויזואלית עם
+                            דוגמאות וסיפורים אמיתיים.</li>
+                        <li style="margin-bottom: 1rem; font-size: 1.1rem; color: #ddd;">✦ אפשרות להעברת סדנה
+                            אינטראקטיבית לקבוצות.</li>
+                    </ul>
                 </div>
-
-                <div class="contact-grid reveal"
-                    style="margin-top: 4rem; display: grid; grid-template-columns: 1fr; gap: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    <div class="glass-card contact-box" style="text-align: center;">
-                        <h3 style="color: #fff; margin-bottom: 1rem;">להזמנת הרצאה</h3>
-                        <p style="margin-bottom: 2rem; color: #ccc;">מחפשים תוכן איכותי לאירוע הבא?</p>
-                        <a href="mailto:edenhadad70@gmail.com" class="btn-glow"
-                            style="width: 100%; margin-bottom: 1rem; margin-left: 0;">
-                            <i class="fas fa-envelope" style="margin-left: 0.5rem;"></i> קבלת הצעת מחיר
-                        </a>
-                        <br>
-                        <a href="https://wa.me/972500000000" class="whatsapp-link">
-                            <i class="fab fa-whatsapp"></i> שיחה מהירה בוואטסאפ
-                        </a>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">מענה תוך 24 שעות</p>
-                    </div>
-                </div>
-            </div>
         </section>
 
-        <footer>
-            &copy; 2025 Eden. Premium Lecture Series. Designed for the Curious.
-        </footer>
+        <div class="concept-grid reveal" style="margin-top: 0; gap: 2rem; text-align: right;">
+            <div class="glass-card" style="padding: 2rem;">
+                <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">הרצאת הדגל</h4>
+                <p style="font-size: 1rem;">45-60 דקות של מסע ויזואלי ואינטלקטואלי מרתק. מתאים לכל דרגי הארגון.
+                </p>
+            </div>
+            <div class="glass-card" style="padding: 2rem;">
+                <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">סדנה אינטראקטיבית</h4>
+                <p style="font-size: 1rem;">מפגש אינטראקטיבי המשלב את הרעיונות בהרצאה עם תרגילי חשיבה, פעילויות ושיח
+                    משותף על יישום התובנות בחיי היום-יום.</p>
+            </div>
+            <div class="glass-card" style="padding: 2rem;">
+                <h4 style="color: #fff; font-size: 1.4rem; margin-bottom: 1rem;">סדנאות לילדים</h4>
+                <p style="font-size: 1rem;">חקר היקום דרך הדמיון והסקרנות. מפגש המותאם במיוחד לבתי ספר, מרכזי
+                    מצוינות ונוער שוחר מדע.</p>
+            </div>
+        </div>
+
+        <div class="contact-grid reveal"
+            style="margin-top: 4rem; display: grid; grid-template-columns: 1fr; gap: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <div class="glass-card contact-box" style="text-align: center;">
+                <h3 style="color: #fff; margin-bottom: 1rem;">להזמנת הרצאה</h3>
+                <p style="margin-bottom: 2rem; color: #ccc;">מחפשים תוכן איכותי לאירוע הבא?</p>
+                <a href="mailto:edenhadad70@gmail.com?subject=%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%94%D7%A8%D7%A6%D7%90%D7%94&body=%D7%94%D7%99%D7%99%20%D7%A2%D7%93%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%94%D7%A8%D7%A6%D7%90%D7%94%20%D7%95%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%9C%D7%90%D7%99%D7%A8%D7%95%D7%A2%20%D7%A9%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%AA%D7%9B%D7%A0%D7%A0%D7%99%D7%9D."
+                    class="btn-glow" style="width: 100%; margin-bottom: 1rem; margin-left: 0;">
+                    <i class="fas fa-envelope" style="margin-left: 0.5rem;"></i> קבלת הצעת מחיר
+                </a>
+                <br>
+                <a href="https://wa.me/972549451235" class="whatsapp-link">
+                    <i class="fab fa-whatsapp"></i> שיחה מהירה בוואטסאפ
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">מענה תוך 24 שעות</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        &copy; 2025 Eden. Premium Lecture Series. Designed for the Curious.
+    </footer>
     </div>
 
     <script>
