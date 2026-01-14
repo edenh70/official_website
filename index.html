@@ -312,7 +312,7 @@
         }
 
         .speaker-text {
-            order: 2;
+            /* order: 2; removed to align text to the right (first in DOM) */
         }
 
         .speaker-bio-highlight {
@@ -390,6 +390,25 @@
             font-family: 'Cinzel', serif;
         }
 
+        .whatsapp-link {
+            color: #25D366;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .whatsapp-link:hover {
+            background: rgba(37, 211, 102, 0.1);
+            border-color: #25D366;
+        }
+
         /* --- FOOTER --- */
         footer {
             text-align: center;
@@ -436,17 +455,17 @@
             }
 
             .section {
-                padding: 4rem 0;
+                padding: 2rem 0;
             }
 
             .hero {
-                padding: 5rem 0;
+                padding: 3rem 0;
                 min-height: auto;
             }
 
             .concept-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
             .concept-card {
@@ -465,7 +484,7 @@
 
             .speaker-editorial {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .speaker-text {
@@ -491,7 +510,7 @@
             .hero-desc {
                 border-right: none;
                 padding-right: 0;
-                margin: 0 auto 2rem auto;
+                margin: 0 auto 1.5rem auto;
                 font-size: 1.1rem;
             }
 
@@ -674,10 +693,14 @@
                     </span>
                 </h1>
                 <p class="hero-desc reveal" style="transition-delay: 0.4s;">
-                    מסע ויזואלי סוחף שיצית בכם מחדש את הסקרנות הילדית, ויגרום לכם להסתכל על השמיים - ועל עצמכם - בעיניים
-                    אחרות לגמרי
+                    מסע ויזואלי סוחף שיצית בכם מחדש את הסקרנות הילדית ויגרום לכם להסתכל על השמיים - ועל עצמכם - בעיניים
+                    אחרות לגמרי.
                     <br><br>
-                    <strong>שילוב של מדע, פילוסופיה ורגש – בגובה העיניים.</strong>
+                    דרך צילומים נדירים וסיפורים על המסע האנושי לחלל, נגלה איך המבט מלמעלה הופך את הדרמות היומיומיות
+                    לקטנות יותר, מעניק פרופורציות חדשות לחיים ומחזיר לנו את הפליאה והשלווה שקצת הלכו לאיבוד בתוך הרעש של
+                    היום-יום.
+                    <br><br>
+                    <strong style="font-size: 1.2em;">שילוב של מדע, פילוסופיה ורגש – בגובה העיניים.</strong>
                 </p>
                 <div class="hero-actions reveal" style="transition-delay: 0.6s;">
                     <a href="#tickets" class="btn-glow">
@@ -710,7 +733,7 @@
             <div class="concept-card glass-card">
                 <div class="concept-num">I</div>
                 <h3>פרספקטיבה</h3>
-                <p>כיצד שינוי קנה המידה של המבט שלנו משפיע על האופן שבו אנו מעבדים רגשות ומקבלים החלטות.</p>
+                <p>כיצד שינוי קנה המידה של המבט שלנו משפיע על האופן שבו אנו תופסים את המציאות ומעבדים רגשות.</p>
             </div>
             <div class="concept-card glass-card" style="transition-delay: 0.2s;">
                 <div class="concept-num">II</div>
@@ -731,8 +754,8 @@
                     <span class="subtitle">הדובר</span>
                     <h2>עדן חדד</h2>
                     <p class="speaker-bio-highlight">
-                        "סקרנות היא הדלק של האהבה. ככל שאנו לומדים ומבינים את היקום שסביבנו, כך אנו מעמיקים את החיבור
-                        לעצמנו ולאנשים סביבנו"
+                        "סקרנות היא הדלק של האהבה. ככל שאנו לומדים ומבינים את היקום סביבנו, כך אנו מעמיקים את החיבור
+                        לעצמנו ולסובבים אותנו"
                     </p>
                     <p style="color: #aaa; margin-bottom: 2rem;">
                         מרצה ואיש חינוך, עוסק בהנגשת ידע לציבור הרחב. מחבר בין עולמות התוכן של המדע המדויק לבין החוויה
@@ -818,9 +841,21 @@
                     </div>
                 </div>
 
-                <div class="reveal" style="margin-top: 4rem;">
-                    <a href="mailto:edenhadad70@gmail.com" class="btn-glow btn-secondary" style="margin: 0;">צרו קשר
-                        להצעת מחיר</a>
+                <div class="contact-grid reveal"
+                    style="margin-top: 4rem; display: grid; grid-template-columns: 1fr; gap: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <div class="glass-card contact-box" style="text-align: center;">
+                        <h3 style="color: #fff; margin-bottom: 1rem;">להזמנת הרצאה</h3>
+                        <p style="margin-bottom: 2rem; color: #ccc;">מחפשים תוכן איכותי לאירוע הבא?</p>
+                        <a href="mailto:edenhadad70@gmail.com" class="btn-glow"
+                            style="width: 100%; margin-bottom: 1rem; margin-left: 0;">
+                            <i class="fas fa-envelope" style="margin-left: 0.5rem;"></i> קבלת הצעת מחיר
+                        </a>
+                        <br>
+                        <a href="https://wa.me/972500000000" class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> שיחה מהירה בוואטסאפ
+                        </a>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">מענה תוך 24 שעות</p>
+                    </div>
                 </div>
             </div>
         </section>
