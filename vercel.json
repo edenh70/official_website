@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/curiousexplorer",
+      "destination": "https://frontend-eight-ashy-13.vercel.app/",
+      "permanent": true
+    },
+    {
+      "source": "/curiousexplorer/:path*",
+      "destination": "https://frontend-eight-ashy-13.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
+}

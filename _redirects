@@ -1,0 +1,6 @@
+# Netlify Redirect Configuration
+# This provides a server-side redirect for better SEO and performance
+
+# Redirect /curiousexplorer to Vercel app
+/curiousexplorer https://frontend-eight-ashy-13.vercel.app/ 301!
+/curiousexplorer/* https://frontend-eight-ashy-13.vercel.app/:splat 301!

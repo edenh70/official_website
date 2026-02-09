@@ -1,0 +1,10 @@
+# Apache .htaccess Redirect Configuration
+# Use this if your site is hosted on Apache server
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect /curiousexplorer to Vercel app
+    RewriteRule ^curiousexplorer/?$ https://frontend-eight-ashy-13.vercel.app/ [R=301,L]
+    RewriteRule ^curiousexplorer/(.*)$ https://frontend-eight-ashy-13.vercel.app/$1 [R=301,L]
+</IfModule>
