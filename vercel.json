@@ -9,6 +9,11 @@
       "source": "/curiousexplorer/:path*",
       "destination": "https://frontend-eight-ashy-13.vercel.app/:path*",
       "permanent": true
+    },
+    {
+      "source": "/feedback",
+      "destination": "https://forms.gle/rdqPVyMZ9PGximJh8",
+      "permanent": true
     }
   ]
 }

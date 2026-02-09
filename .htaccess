@@ -7,4 +7,7 @@
     # Redirect /curiousexplorer to Vercel app
     RewriteRule ^curiousexplorer/?$ https://frontend-eight-ashy-13.vercel.app/ [R=301,L]
     RewriteRule ^curiousexplorer/(.*)$ https://frontend-eight-ashy-13.vercel.app/$1 [R=301,L]
+    
+    # Redirect /feedback to Google Forms
+    RewriteRule ^feedback/?$ https://forms.gle/rdqPVyMZ9PGximJh8 [R=301,L]
 </IfModule>

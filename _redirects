@@ -4,3 +4,6 @@
 # Redirect /curiousexplorer to Vercel app
 /curiousexplorer https://frontend-eight-ashy-13.vercel.app/ 301!
 /curiousexplorer/* https://frontend-eight-ashy-13.vercel.app/:splat 301!
+
+# Redirect /feedback to Google Forms
+/feedback https://forms.gle/rdqPVyMZ9PGximJh8 301!
