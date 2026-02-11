@@ -673,26 +673,38 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
-            <span>יצירת קשר</span>
+            <span>עדכונים וכרטיסים</span>
         </button>
         <div id="lead-form-content" class="lead-form-content" hidden>
-            <h3>נשמח לשמוע ממך</h3>
-            <form id="lead-form" aria-label="טופס יצירת קשר">
+            <h3>הישארו מעודכנים</h3>
+            <p style="text-align: center; color: #ccc; font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5;">
+                הצטרפו לרשימת התפוצה וקבלו עדכונים על הרצאות פתוחות, כרטיסים ותכנים מעוררי מחשבה.
+            </p>
+
+            <!-- WhatsApp Join Button -->
+            <a href="https://chat.whatsapp.com/D9rq9PVqBxm5k0h5ObEshP" target="_blank" class="whatsapp-join-btn">
+                <i class="fab fa-whatsapp"></i>
+                להצטרפות לקבוצת העדכונים השקטה
+            </a>
+
+            <div class="divider"><span>או השאירו פרטים</span></div>
+            <form id="lead-form" aria-label="טופס הרשמה לעדכונים">
                 <div class="form-group">
                     <input type="text" id="lead-name" name="name" required placeholder="שם מלא" aria-label="שם מלא">
                 </div>
                 <div class="form-group">
-                    <input type="email" id="lead-email" name="email" required placeholder="אימייל" aria-label="אימייל">
+                    <input type="email" id="lead-email" name="email" required placeholder="אימייל לקבלת עדכונים"
+                        aria-label="אימייל">
                 </div>
                 <div class="form-group">
                     <input type="tel" id="lead-phone" name="phone" placeholder="טלפון (אופציונלי)"
                         aria-label="מספר טלפון">
                 </div>
                 <div class="form-group">
-                    <textarea id="lead-message" name="message" rows="3" placeholder="הודעה (אופציונלי)"
+                    <textarea id="lead-message" name="message" rows="2" placeholder="נושא / בקשה מיוחדת (אופציונלי)"
                         aria-label="הודעה"></textarea>
                 </div>
-                <button type="submit" class="lead-submit-btn">שלח</button>
+                <button type="submit" class="lead-submit-btn">עדכנו אותי על הרצאות!</button>
             </form>
         </div>
     </div>
@@ -795,7 +807,8 @@
             bottom: 30px;
             right: 30px;
             z-index: 9998;
-            max-width: 360px;
+            width: 400px;
+            max-width: 90vw;
             direction: rtl;
         }
 
@@ -855,10 +868,59 @@
 
         .lead-form-content h3 {
             color: var(--accent-gold);
-            font-size: 1.25rem;
-            margin-bottom: 1.25rem;
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
             font-family: 'Cinzel', serif;
             font-weight: 400;
+            text-align: center;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-join-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: rgba(37, 211, 102, 0.15);
+            border: 1px solid #25D366;
+            color: #25D366;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .whatsapp-join-btn:hover {
+            background: rgba(37, 211, 102, 0.25);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp-join-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .divider span {
+            padding: 0 10px;
         }
 
         .form-group {
@@ -926,18 +988,33 @@
             }
 
             #lead-form-container {
-                right: 15px;
-                bottom: 15px;
-                max-width: calc(100vw - 30px);
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                max-width: 100%;
+                z-index: 10000;
             }
 
             #lead-form-toggle {
-                padding: 0.75rem 1.25rem;
-                font-size: 0.9rem;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 10001;
+                font-size: 0.95rem;
             }
 
             .lead-form-content {
-                padding: 1.25rem;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                border-radius: 20px 20px 0 0;
+                padding: 2rem 1.5rem 5rem 1.5rem;
+                border-bottom: none;
+                border-left: none;
+                border-right: none;
+                background: #050508;
             }
         }
     </style>
@@ -1100,9 +1177,6 @@
                 <p class="hero-desc reveal" style="transition-delay: 0.4s;">
                     למה אסטרונאוטים חוזרים מהחלל עם תפיסת עולם שונה לחלוטין?<br>
                     איך פליאה קוסמית משתיקה את האגו ומפחיתה לחץ בתוך דקות?<br>
-                    למה ההבנה שאנחנו בסך הכל אבק של כוכבים היא כלי פרקטי לחיים היום?<br>
-                    איך מאמצים את מבט האסטרונאוטים בלי לעזוב את כדור הארץ?
-                    <br><br>
                     <strong style="font-size: 1.2em;">שילוב של מדע, פסיכולוגיה ורגש – בגובה העיניים.</strong>
                 </p>
                 <div class="hero-actions reveal" style="transition-delay: 0.6s;">
